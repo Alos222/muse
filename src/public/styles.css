@@ -1,0 +1,7 @@
+.logoimg {
+    max-height: 100px;
+}
+.nav{
+    background-color: red;
+    display: flex;
+}
