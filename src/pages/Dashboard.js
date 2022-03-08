@@ -1,4 +1,5 @@
 import Gallery from "../components/gallery"
+import DepartmentData from "../departmentdata";
 
 
 function Dashboard(props) {
@@ -6,6 +7,7 @@ function Dashboard(props) {
         <div>
             Welcome
             <Gallery/>
+            <DepartmentData/>
         </div>
     )
 }
