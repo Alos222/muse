@@ -1,7 +1,25 @@
 .logoimg {
-    max-height: 100px;
+    max-height: 80px;
 }
 .nav{
-    background-color: red;
+    background-color: #EB2329;
     display: flex;
+}
+.hero_img {
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: 0px -400px;
+    height: 600px;
+}
+.met_img{
+    height: 700px;
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: 0px -200px;
+}
+.About{
+    
+    margin-top: 100px;
 }
