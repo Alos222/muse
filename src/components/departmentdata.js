@@ -1,5 +1,5 @@
 import React from "react";
-import ""
+
 
 const DepartmentData = () => {
     const url = "https://collectionapi.metmuseum.org/public/collection/v1/departments"
