@@ -1,5 +1,5 @@
 import Gallery from "../components/gallery"
-import DepartmentData from "../departmentdata";
+import DepartmentData from "../components/departmentdata";
 
 
 function Dashboard(props) {
