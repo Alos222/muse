@@ -1,4 +1,5 @@
 import React from "react";
+import { Card, Col, Row, CardGroup } from "react-bootstrap"
 
 
 const DepartmentData = () => {
@@ -13,10 +14,10 @@ const DepartmentData = () => {
             const response = await fetch(url);
             const data = await response.json();
             const dept = data.departments.map((dept) => (
-                <div className="departmentcards" key={dept.departmentId}>
-                    <h4>{dept.displayName}</h4>
-                </div>
-                ))
+                <Card border='light' style={{ width: '18rem' }} key={dept.departmentId}>
+                    <Card.Title>{dept.displayName}</Card.Title>
+                </Card>
+            ))
             setDepartment(dept);
             // console.log(dep)
             // setDeptBool(false)
@@ -32,9 +33,9 @@ const DepartmentData = () => {
 
     const loaded = () => {
         return (
-            <div>
+            <Row>
                 {department}
-            </div>
+            </Row>
         );
     };
 
