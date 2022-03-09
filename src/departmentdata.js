@@ -12,25 +12,30 @@ const DepartmentData = () => {
         const getDepartment = async () => {
             const response = await fetch(url);
             const data = await response.json();
-            setDepartment(data);
+            console.log(data)
+            const dept = data.departments.map((dept) => dept)
+            console.log(dept[0].displayName)
+            const mapped = dept.map((names) => (names.displayName))
+            console.log(mapped)
+            setDepartment(mapped);
             // console.log(dep)
             // setDeptBool(false)
         };
         getDepartment();
     }, []);
-
+console.log(department)
     // console.log(department.departments)
 
     // const dep = department.departments.map(dept => console.log(dept))
 
     //load function for when data is fetched
-    console.log(department.departments)
-    
+
     const loaded = () => {
         return (
             <div>
                 <h2>This is showing up</h2>
-            
+                {department}
+
             </div>
         );
     };
