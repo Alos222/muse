@@ -2,6 +2,7 @@ import Hero from "../img/heroimg.png";
 import Met from "../img/met.png"
 import { Container, Row, Col, Stack } from "react-bootstrap";
 
+
 function Main(props) {
     return (
         <Container fluid className={"no-gutters mx-0 px-0"}>
