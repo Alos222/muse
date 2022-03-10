@@ -6,6 +6,7 @@ const DepartmentData = () => {
     const url = "https://collectionapi.metmuseum.org/public/collection/v1/departments"
 
     const [department, setDepartment] = React.useState("null");
+
     // const [deptBool, setDeptBool] = React.useState(true)
     //useEffect to run getArtwork when component mounts
     React.useEffect(() => {
@@ -13,29 +14,29 @@ const DepartmentData = () => {
         const getDepartment = async () => {
             const response = await fetch(url);
             const data = await response.json();
+
+            //After the data is imported, turn that data into cards
             const dept = data.departments.map((dept) => (
-                <Card border='light' style={{ width: '18rem' }} key={dept.departmentId}>
+        
+                       <Card border='light' style={{ width: '18rem' }} key={dept.departmentId}>
                     <Card.Title>{dept.displayName}</Card.Title>
                 </Card>
+ 
             ))
             setDepartment(dept);
-            // console.log(dep)
-            // setDeptBool(false)
         };
         getDepartment();
     }, []);
-    // console.log(department)
-    // console.log(department.departments)
-
-    // const dep = department.departments.map(dept => console.log(dept))
 
     //load function for when data is fetched
 
     const loaded = () => {
         return (
-            <Row>
+            <Col sm={8}>
+                <Col>
                 {department}
-            </Row>
+                </Col>
+            </Col>
         );
     };
 

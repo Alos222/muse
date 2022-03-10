@@ -1,12 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
+//styling import
 import "./index.css";
 import "./public/styles.css"
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
 //IMPORT BrowserRouter and rename it to Router
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
+
+//Components
 import Nav from "./components/Nav";
 import Main from "./pages/Main"
 import Dashboard from "./pages/Dashboard"

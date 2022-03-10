@@ -1,18 +1,19 @@
 import Gallery from "../components/gallery"
 import DepartmentData from "../components/departmentdata";
-import {Row, Col, Card, Container} from "react-bootstrap"
+import Sidebar from "../components/sidebar"
+import { Row, Col, Card, Container } from "react-bootstrap"
 
 
 function Dashboard(props) {
     return (
-        <div>
-            Welcome
+        <Container fluid className={"no-gutters mx-0 px-0"}>
             <Gallery />
-            <Container>
-            <DepartmentData/>
-            </Container>
-            
-        </div>
+            <Row>
+                <Sidebar />
+                <DepartmentData />
+            </Row>
+
+        </Container>
     )
 }
 
