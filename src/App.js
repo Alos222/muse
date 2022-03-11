@@ -7,11 +7,11 @@ import Header from "./components/Header";
 import Main from "./pages/Main"
 import Dashboard from "./pages/Dashboard"
 import Context from './context/context';
-// import Login from './pages/Login';
-// import Register from './pages/Register';
+import Login from './pages/login';
+import Register from './pages/register';
 
 import { useEffect, useState, React } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import {  Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -34,11 +34,12 @@ function App() {
       if (token === null) {
         localStorage.setItem('auth-token', '');
         token = '';
+
       }
 
       const tokenResponse = await axios.post
         (
-          'http://localhost:6000/api/auth/tokenIsValid',
+          'http://localhost:3001/api/auth/tokenIsValid',
           null,
           {
             headers: {
@@ -48,11 +49,10 @@ function App() {
         ).catch((error) => {
           console.log(error.toJSON());
         });
-
       if (tokenResponse) {
         const res = await axios.get
           (
-            'http://localhost:6000/api/auth/tokenIsValid',
+            'http://localhost:3001/api/auth/tokenIsValid',
             {
               headers: {
                 'x-auth-token': token
@@ -60,14 +60,13 @@ function App() {
             }).catch((error) => {
               setError(error);
             });
-
+        console.log(res)
         setUserCredentials({
           token,
           user: res,
         });
       }
     }
-
     checkLoggedIn();
 
   }, []);
@@ -76,9 +75,10 @@ function App() {
       <Context.Provider value={{ userCredentials, setUserCredentials }}>
         <Header />
         <Routes >
-          <Route path="/" element={<App />} />
-          <Route index element={<Main />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route index element={userCredentials ? < Main /> : < Login />} />
+          <Route path="/dashboard" element={userCredentials? <Dashboard /> : < Login/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register/>} />
         </Routes>
       </Context.Provider>
   );

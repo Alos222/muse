@@ -1,27 +1,27 @@
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react'
-import Context from '../context/context'
+import { useContext } from 'react';
+import Context from '../context/context';
 
-export default function Auth() {
+const Auth = () => {
 
     const { userCred, setUserCred } = useContext(Context);
-    const nav = useNavigate();
+    const navigate = useNavigate();
 
-    const register = () => nav('/register');
-    const login = () => nav('/login');
+    const register = () => navigate('/register');
+    const login = () => navigate('/login');
     const logout = () => {
 
         setUserCred({ token: undefined, user: undefined});
 
         localStorage.setItem('auth-token', '');
-        nav('/login')
+        navigate('/login')
     };
     const accountDelete = () => {
 
         setUserCred({token:undefined, user:undefined});
 
         localStorage.setItem('auth-token', '');
-        nav('/login')
+        navigate('/login')
     }
     return (
         <div>
@@ -40,3 +40,5 @@ export default function Auth() {
         </div>
     )
 }
+
+export default Auth
