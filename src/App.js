@@ -50,7 +50,7 @@ function App() {
           console.log(error.toJSON());
         });
       if (tokenResponse) {
-        const res = await axios.get
+        const res = await axios.post
           (
             'http://localhost:3001/api/auth/tokenIsValid',
             {
@@ -76,7 +76,7 @@ function App() {
         <Header />
         <Routes >
           <Route index element={userCredentials ? < Main /> : < Login />} />
-          <Route path="/dashboard" element={userCredentials? <Dashboard /> : < Login/>} />
+          <Route path="/dashboard" element={userCredentials ? <Dashboard /> : < Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register/>} />
         </Routes>
