@@ -10,12 +10,6 @@ import reportWebVitals from "./reportWebVitals";
 //IMPORT BrowserRouter and rename it to Router
 import { BrowserRouter as Router } from "react-router-dom";
 
-//Components
-import Nav from "./components/Nav";
-import Main from "./pages/Main"
-import Dashboard from "./pages/Dashboard"
-
-
 ReactDOM.render(
   <React.StrictMode>
     <Router>

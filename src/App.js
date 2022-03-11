@@ -1,8 +1,9 @@
+//Styling Imports
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Components
-import Nav from "./components/Nav";
+import Header from "./components/Header";
 import Main from "./pages/Main"
 import Dashboard from "./pages/Dashboard"
 import Context from './context/context';
@@ -10,11 +11,8 @@ import Context from './context/context';
 // import Register from './pages/Register';
 
 import { useEffect, useState, React } from 'react';
-
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
-
 
 
 function App() {
@@ -76,7 +74,7 @@ function App() {
 
   return (
       <Context.Provider value={{ userCredentials, setUserCredentials }}>
-        <Nav />
+        <Header />
         <Routes >
           <Route path="/" element={<App />} />
           <Route index element={<Main />} />

@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../img/logo.png";
 
-
-
-
-const Nav = (props) => {
+const Nav = () => {
     return (
         <div className="navigation">
             <div>
@@ -13,7 +10,7 @@ const Nav = (props) => {
                 </Link>
             </div>
             <div id="auth_links">
-                <Link to="/">
+                <Link to="/dashboard">
                     <div>Sign in</div>
                 </Link>
                 <Link to="/">
