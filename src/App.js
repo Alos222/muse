@@ -16,7 +16,8 @@ import axios from 'axios';
 
 
 function App() {
-
+  const user = localStorage.getItem('auth-token')
+  console.log(!user)
   const [error, setError] = useState();
   const [userCredentials, setUserCredentials] = useState({
 
@@ -34,9 +35,7 @@ function App() {
       if (token === null) {
         localStorage.setItem('auth-token', '');
         token = '';
-
       }
-
       const tokenResponse = await axios.post
         (
           'http://localhost:3001/api/auth/tokenIsValid',
@@ -60,23 +59,23 @@ function App() {
             }).catch((error) => {
               setError(error);
             });
-        console.log(res)
+        console.log(res.data)
         setUserCredentials({
           token,
           user: res,
         });
       }
     }
+    console.log(!user)
     checkLoggedIn();
-
   }, []);
 
   return (
       <Context.Provider value={{ userCredentials, setUserCredentials }}>
         <Header />
         <Routes >
-          <Route path="/" index element={userCredentials ? < Main /> : < Login />} />
-          <Route path="/dashboard" element={userCredentials ? <Dashboard /> : < Login />} />
+          <Route exact path="/" index element={user ? < Dashboard /> : < Main />} />
+          <Route exact path="/dashboard" index element={user ? <Dashboard /> : < Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register/>} />
         </Routes>
