@@ -31,14 +31,12 @@ const Login =() => {
             });
 
             localStorage.setItem('auth.token', res.data.token);
-
+            navigate(setUserCredentials ? '/dashboard' : '/');
         } catch (err) {
 
             console.log(err);
 
-        } finally {
-            navigate('/dashboard');
-        }
+        } 
     };
     return (
         <div>
