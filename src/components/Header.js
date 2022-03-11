@@ -1,27 +1,18 @@
 import { Link } from "react-router-dom";
 import Logo from "../img/logo.png";
+import Auth from "./auth";
 
-
-
-
-const Nav = (props) => {
+const Header = () => {
     return (
         <div className="navigation">
             <div>
                 <Link to="/">
                     <img src={Logo} className="logoimg" alt="Logo" />
                 </Link>
-            </div>
-            <div id="auth_links">
-                <Link to="/">
-                    <div>Sign in</div>
-                </Link>
-                <Link to="/">
-                    <div>Sign up</div>
-                </Link>
+                <Auth /> 
             </div>
         </div>
     );
 };
 
-export default Nav;
+export default Header;

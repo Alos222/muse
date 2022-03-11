@@ -9,25 +9,11 @@ import reportWebVitals from "./reportWebVitals";
 
 //IMPORT BrowserRouter and rename it to Router
 import { BrowserRouter as Router } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
-
-//Components
-import Nav from "./components/Nav";
-import Main from "./pages/Main"
-import Dashboard from "./pages/Dashboard"
-//Wrap the App Component with the Router component to enable the router features
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Nav />
-      <Routes >
-        <Route path="/" element={<App />} >
-          <Route index element={<Main />} />
-        </Route>
-        <Route path="/dashboard" element={<Dashboard/>}>
-        </Route>
-      </Routes>
+      <App/>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
