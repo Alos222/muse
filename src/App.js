@@ -16,8 +16,9 @@ import axios from 'axios';
 
 
 function App() {
+ 
   const user = localStorage.getItem('auth-token')
-  console.log(!user)
+
   const [error, setError] = useState();
   const [userCredentials, setUserCredentials] = useState({
 
@@ -29,7 +30,7 @@ function App() {
   useEffect(() => {
 
     const checkLoggedIn = async () => {
-
+  
       let token = localStorage.getItem('auth-token');
 
       if (token === null) {
@@ -66,7 +67,6 @@ function App() {
         });
       }
     }
-    console.log(!user)
     checkLoggedIn();
   }, []);
 
@@ -75,7 +75,7 @@ function App() {
         <Header />
         <Routes >
           <Route exact path="/" index element={user ? < Dashboard /> : < Main />} />
-          <Route exact path="/dashboard" index element={user ? <Dashboard /> : < Login />} />
+          <Route exact path="/dashboard" index element={!user ? <Dashboard /> : < Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register/>} />
         </Routes>

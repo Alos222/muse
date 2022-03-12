@@ -9,7 +9,10 @@ const Login =() => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState();
+    console.log(Context)
     const { setUserCredentials } = useContext(Context);
+    console.log(setUserCredentials)
+
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -29,7 +32,7 @@ const Login =() => {
                 user: res.data.user,
 
             });
-
+            console.log(setUserCredentials)
             localStorage.setItem('auth.token', res.data.token);
             navigate(setUserCredentials ? '/dashboard' : '/');
         } catch (err) {
