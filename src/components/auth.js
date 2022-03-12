@@ -16,18 +16,15 @@ const Auth = () => {
         localStorage.setItem('auth-token', '');
         navigate('/login')
     };
-    const accountDelete = () => {
+    const Home = () => {
 
-        setUserCredentials({token:undefined, user:undefined});
-
-        localStorage.setItem('auth-token', '');
-        navigate('/login')
+        navigate('/dashboard')
     }
     return (
         <div>
             {userCredentials.token ? (
                 <div>
-                    <button onClick={accountDelete}>Delete Account</button>
+                    <button onClick={Home}>Home</button>
                     <button onClick={logout}>Logout</button>
                 </div>
             ) : (

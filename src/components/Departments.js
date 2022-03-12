@@ -1,9 +1,6 @@
-import Header from "./Header"
-import { useEffect, useState } from 'react';
-import { Link } from "react-router-dom"
 import { Card, CardGroup, Col, Row } from 'react-bootstrap'
 
-const GalleryLoad = () => {
+const Department = () => {
     const departments = [
         {
             departmentId: 1,
@@ -104,4 +101,4 @@ const GalleryLoad = () => {
     )
 }
 
-export default GalleryLoad
+export default Department
