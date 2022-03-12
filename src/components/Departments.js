@@ -1,6 +1,6 @@
-import Header from "../components/Header"
+import Header from "./Header"
 import { useEffect, useState } from 'react';
-import { Links } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Card, CardGroup, Col, Row } from 'react-bootstrap'
 
 const GalleryLoad = () => {
@@ -86,9 +86,11 @@ const GalleryLoad = () => {
     const dept = departments.map((dept) => (
 
         <CardGroup>
-        <Card border='light' style={{ width: '20rem' }} key={dept.departmentId}>
-            <Card.Title>{dept.displayName}</Card.Title>
-        </Card>
+            <Card border='light' style={{ width: '20rem' }} key={dept.departmentId}>
+                <Card.Title>
+                    <Card.Link href={"department/" + dept.departmentId}> {dept.displayName}</Card.Link>
+                </Card.Title>
+            </Card>
         </CardGroup>
     ))
 

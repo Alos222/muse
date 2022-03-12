@@ -9,7 +9,6 @@ import Dashboard from "./pages/Dashboard"
 import Context from './context/context';
 import Login from './pages/login';
 import Register from './pages/register';
-import Galleryload from "./metcalls/galleryload"
 
 import { useEffect, useState, React } from 'react';
 import {  Routes, Route } from 'react-router-dom';
@@ -83,7 +82,6 @@ function App() {
           <Route exact path="/dashboard" index element={userCredentials.token ? <Dashboard /> : < Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register/>} />
-          <Route path="/test" element={<Galleryload/>} />
         </Routes>
       </Context.Provider>
   );

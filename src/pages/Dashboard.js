@@ -1,8 +1,8 @@
 import Gallery from "../components/gallery"
-import DepartmentData from "../components/departmentdata";
-import Sidebar from "../components/sidebar"
+
+import Departments from "../components/Departments"
 import { Row, Col, Card, Container, Tab, Nav } from "react-bootstrap"
-import userEvent from "@testing-library/user-event";
+
 
 
 function Dashboard(props) {
@@ -23,7 +23,7 @@ function Dashboard(props) {
                                 <Nav.Link eventKey="first">Gallery</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="second">Collections</Nav.Link>
+                                <Nav.Link eventKey="departments">Departments</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Col>
@@ -32,8 +32,8 @@ function Dashboard(props) {
                             <Tab.Pane eventKey="first">
                             <Gallery/>
                             </Tab.Pane>
-                            <Tab.Pane eventKey="second">
-                            <DepartmentData/>
+                            <Tab.Pane eventKey="departments">
+                            <Departments/>
                             </Tab.Pane>
                         </Tab.Content>
                     </Col>
