@@ -32,10 +32,13 @@ function App() {
     const checkLoggedIn = async () => {
   
       let token = localStorage.getItem('auth-token');
+      console.log('checking for login')
+      console.log(token)
 
-      if (token === null) {
+      if (!token) {
         localStorage.setItem('auth-token', '');
         token = '';
+        console.log('i am null')
       }
       const tokenResponse = await axios.post
         (
@@ -60,10 +63,10 @@ function App() {
             }).catch((error) => {
               setError(error);
             });
-        console.log(res.data)
         setUserCredentials({
           token,
           user: res,
+         
         });
       }
     }
@@ -72,10 +75,11 @@ function App() {
 
   return (
       <Context.Provider value={{ userCredentials, setUserCredentials }}>
+        {console.log(userCredentials)}
         <Header />
         <Routes >
-          <Route exact path="/" index element={user ? < Dashboard /> : < Main />} />
-          <Route exact path="/dashboard" index element={!user ? <Dashboard /> : < Login />} />
+          <Route exact path="/" index element={!userCredentials ? < Dashboard /> : < Main />} />
+          <Route exact path="/dashboard" index element={userCredentials.token ? <Dashboard /> : < Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register/>} />
         </Routes>

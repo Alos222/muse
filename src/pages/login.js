@@ -9,9 +9,9 @@ const Login =() => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState();
-    console.log(Context)
-    const { setUserCredentials } = useContext(Context);
-    console.log(setUserCredentials)
+    const  authContext = useContext(Context);
+    console.log(authContext)
+    const { setUserCredentials } = authContext
 
     const navigate = useNavigate();
 
@@ -26,14 +26,14 @@ const Login =() => {
                     user
                 );
             console.log(res)
+            console.log('setting the creds yo!')
             setUserCredentials({
-
                 token: res.data.token,
                 user: res.data.user,
 
             });
             console.log(setUserCredentials)
-            localStorage.setItem('auth.token', res.data.token);
+            localStorage.setItem('auth-token', res.data.token);
             navigate(setUserCredentials ? '/dashboard' : '/');
         } catch (err) {
 
