@@ -1,5 +1,7 @@
 import React from "react"
 import { useParams } from "react-router-dom"
+import axios from 'axios'
+
 
 const DeptView = () => {
     const params = useParams();
@@ -18,10 +20,21 @@ const DeptView = () => {
             const data = await response.json()
             const iDs = data.objectIDs
             console.log(iDs)
-            const iDMap = iDs.map((ID) => {
-                return {ID}
+            const slicedIDs = iDs.slice(-10)
+            const urlCalls = slicedIDs.map((ID) => {
+                const callURL = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${ID}`
+                const artResponse = axios({
+                    method: 'get',
+                    url: callURL,
+                    responseType: 'json'
+                })
+                console.log(artResponse)
             })
-            setArtIDs(iDMap)
+            // const iDMap = iDs.map((ID) => {
+            //     return {ID}
+            // })
+            // console.log(iDMap)
+            setArtIDs(iDs)
         };
         getArtIDs();
     }, [url])
