@@ -4,28 +4,28 @@ import Context from '../context/context';
 
 const Auth = () => {
 
-    const { userCred, setUserCred } = useContext(Context);
+    const { userCredentials, setUserCredentials } = useContext(Context);
     const navigate = useNavigate();
 
     const register = () => navigate('/register');
     const login = () => navigate('/login');
     const logout = () => {
 
-        setUserCred({ token: undefined, user: undefined});
+        setUserCredentials({ token: undefined, user: undefined});
 
         localStorage.setItem('auth-token', '');
         navigate('/login')
     };
     const accountDelete = () => {
 
-        setUserCred({token:undefined, user:undefined});
+        setUserCredentials({token:undefined, user:undefined});
 
         localStorage.setItem('auth-token', '');
         navigate('/login')
     }
     return (
         <div>
-            {userCred ? (
+            {userCredentials.token ? (
                 <div>
                     <button onClick={accountDelete}>Delete Account</button>
                     <button onClick={logout}>Logout</button>
