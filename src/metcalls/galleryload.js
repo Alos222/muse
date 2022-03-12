@@ -1,6 +1,7 @@
 import Header from "../components/Header"
 import { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom"
+import { Links } from "react-router-dom"
+import { Card, CardGroup, Col, Row } from 'react-bootstrap'
 
 const GalleryLoad = () => {
     const departments = [
@@ -82,19 +83,22 @@ const GalleryLoad = () => {
         }
     ]
 
-    const [gallery, setGallery] = useState("null");
+    const dept = departments.map((dept) => (
 
-    useEffect(() => {
-
-        const setGallery = async () => {
-
-        }
-    })
-
-
+        <CardGroup>
+        <Card border='light' style={{ width: '20rem' }} key={dept.departmentId}>
+            <Card.Title>{dept.displayName}</Card.Title>
+        </Card>
+        </CardGroup>
+    ))
 
     return (
-        <p1>hi</p1>
+        <Row className="justify-content-md-center">
+            <Col lg={10}>
+                <CardGroup>{dept}</CardGroup>
+            </Col>
+        </Row>
+
     )
 }
 
