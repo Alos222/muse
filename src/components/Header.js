@@ -1,0 +1,18 @@
+import { Link } from "react-router-dom";
+import Logo from "../img/logo.png";
+import Auth from "./auth";
+
+const Header = () => {
+    return (
+        <div className="navigation">
+            <div>
+                <Link to="/">
+                    <img src={Logo} className="logoimg" alt="Logo" />
+                </Link>
+                <Auth /> 
+            </div>
+        </div>
+    );
+};
+
+export default Header;

@@ -1,9 +1,11 @@
 .logoimg {
     max-height: 80px;
+    margin-top: 10px;
+    margin-left: 20px;
 }
-.nav{
+.navigation{
     background-color: #EB2329;
-    display: flex;
+    max-height: 120px;
 }
 .hero_img {
     width: 100%;
@@ -20,6 +22,14 @@
     object-position: 0px -200px;
 }
 .About{
-    
     margin-top: 100px;
+}
+#auth_links{
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 5px;
+    margin-right: 2em;
+}
+.userWelcome{
+    margin: 2rem 2rem;
 }
