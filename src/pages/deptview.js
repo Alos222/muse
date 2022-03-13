@@ -5,23 +5,23 @@ import axios from 'axios'
 
 const DeptView = () => {
     const params = useParams();
-    console.log(params)
-    const deptkey = params.deptID
-    console.log(deptkey)
-    const url = `https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${deptkey}`
-    console.log(url)
 
-    const [art, setArt] = React.useState()
-    console.log(art)
+    const deptkey = params.deptID
+
+    const url = `https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${deptkey}`
+
+
+    const [artCard, setArtCard] = React.useState()
+    let artArr = []
+    
+    console.log(artCard)
 
     React.useEffect(() => {
-        const getArtIDs = async () => {
+        const getArt = async () => {
             const response = await fetch(url)
             const data = await response.json()
             const iDs = data.objectIDs
-            console.log(iDs)
-            let artArr = []
-            const slicedIDs = iDs.slice(-50)
+            const slicedIDs = iDs.slice(-20)
             slicedIDs.map((ID) => {
                 const callURL = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${ID}`
                 axios({
@@ -30,8 +30,17 @@ const DeptView = () => {
                     responseType: 'json'
                 }).then(function (response) {
                     const json = response.data
-
                     artArr.push(json)
+                    const mappedArr = artArr.map((obj) => (
+                        <div>
+                            <p>
+                            {obj.title}
+                            </p>
+                        </div>
+                    ))
+                    setArtCard(mappedArr)
+                    console.log(mappedArr)
+                    
                 })
                 // return artResponse
             })
@@ -39,14 +48,14 @@ const DeptView = () => {
             //     return {ID}
             // })
             // console.log(iDMap)
-            setArt(artArr)
+            // setArt()
         };
-        getArtIDs();
+        getArt();
     }, [url])
 
 
     return (
-        <p>1</p>
+        <p>{artCard}</p>
     )
 }
 
