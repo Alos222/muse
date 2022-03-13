@@ -53,6 +53,7 @@ function App() {
         ).catch((error) => {
           console.log(error.toJSON());
         });
+      // console.log(tokenResponse)
       if (tokenResponse) {
         const res = await axios.post
           (
@@ -66,7 +67,7 @@ function App() {
             });
         setUserCredentials({
           token,
-          user: res,
+          user: tokenResponse,
          
         });
       }
@@ -76,7 +77,6 @@ function App() {
 
   return (
       <Context.Provider value={{ userCredentials, setUserCredentials }}>
-        {console.log(userCredentials)}
         <Header />
         <Routes >
           <Route exact path="/" index element={!userCredentials ? < Dashboard /> : < Main />} />
