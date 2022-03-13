@@ -7,9 +7,14 @@ import Header from "./components/Header";
 import Main from "./pages/Main"
 import Dashboard from "./pages/Dashboard"
 import Context from './context/context';
+
+
+//Pages
 import Login from './pages/login';
 import Register from './pages/register';
 import DeptView from './pages/deptview';
+import ArtDetail from './pages/artDetailView';
+
 
 import { useEffect, useState, React } from 'react';
 import {  Routes, Route } from 'react-router-dom';
@@ -84,7 +89,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register/>} />
           <Route path='/department/:deptID' element={<DeptView/>}/>
-            <Route path=":deptID" element={<DeptView/>}/>
+          <Route path="/artDetail/:objectID" element={< ArtDetail />}/>
+
         </Routes>
       </Context.Provider>
   );

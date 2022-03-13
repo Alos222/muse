@@ -9,7 +9,7 @@ const Gallery = (props) => {
 
     //useEffect to run getArtwork when component mounts
     React.useEffect(() => {
-        //function to fetch coin data
+        
         const getArtwork = async () => {
             const response = await fetch(url);
             const data = await response.json();
