@@ -1,10 +1,7 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import axios from 'axios'
-import { Card, Col, Row, CardGroup } from "react-bootstrap";
-
-
-
+import { Card, Button, Row, Col, CardGroup} from "react-bootstrap";
 
 
 const DeptView = () => {
@@ -42,6 +39,7 @@ const DeptView = () => {
                     artArr.push(json)
                     const mappedArr = artArr.map((obj) => (
                         <Card style={{ width: '25rem' }}>
+                            {console.log(obj)}
                             <Card.Img variant="top" src={obj.primaryImage ? obj.primaryImage : noImg } />
                             <Card.Title>
                                 {obj.title}
@@ -49,6 +47,7 @@ const DeptView = () => {
                             <Card.Body>
                                 {obj.artistDisplayName ? obj.artistDisplayName : "Unknown"}
                             </Card.Body>
+                            <Card.Link href={"../artDetail/" + obj.objectID}>Detail</Card.Link>
                         </Card>
                     ))
                     setArtCard(mappedArr)
