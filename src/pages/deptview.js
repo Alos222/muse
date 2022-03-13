@@ -1,13 +1,18 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import axios from 'axios'
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row, CardGroup } from "react-bootstrap";
+
+
+
 
 
 const DeptView = () => {
     const params = useParams();
 
     const deptkey = params.deptID
+
+    const noImg = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1200px-No_image_3x4.svg.png"
 
     const url = `https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${deptkey}`
 
@@ -21,10 +26,11 @@ const DeptView = () => {
         const getArt = async () => {
             const response = await fetch(url)
             const data = await response.json()
-            const iDs = data.objectIDs.sort()
+            const iDs = data.objectIDs.sort(function(a, b) {
+                return a - b;
+            })
             console.log(iDs)
-            const slicedIDs = iDs.slice(0, 10)
-            console.log(slicedIDs)
+            const slicedIDs = iDs.slice(0, 5)
             slicedIDs.map((ID) => {
                 const callURL = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${ID}`
                 axios({
@@ -36,7 +42,7 @@ const DeptView = () => {
                     artArr.push(json)
                     const mappedArr = artArr.map((obj) => (
                         <Card style={{ width: '25rem' }}>
-                            <Card.Img variant="top" src={obj.primaryImage ? obj.primaryImage : "no image"} />
+                            <Card.Img variant="top" src={obj.primaryImage ? obj.primaryImage : noImg } />
                             <Card.Title>
                                 {obj.title}
                             </Card.Title>
@@ -46,7 +52,6 @@ const DeptView = () => {
                         </Card>
                     ))
                     setArtCard(mappedArr)
-                    console.log(mappedArr)
                 })
             })
         };
@@ -56,7 +61,9 @@ const DeptView = () => {
 
     return (
         <Row>
-            <Col>{artCard}</Col>
+            <Col>
+            <CardGroup>{artCard}</CardGroup>
+            </Col>
         </Row>
 
     )

@@ -14,6 +14,8 @@ const DepartmentData = () => {
         const getDepartment = async () => {
             const response = await fetch(url);
             const data = await response.json();
+            console.log(data.departments.departmentID)
+            console.log('data importing')
 
             //After the data is imported, turn that data into cards
             const dept = data.departments.map((dept) => (
