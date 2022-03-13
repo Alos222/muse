@@ -1,6 +1,7 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import axios from 'axios'
+import { Card, Col, Row } from "react-bootstrap";
 
 
 const DeptView = () => {
@@ -13,15 +14,17 @@ const DeptView = () => {
 
     const [artCard, setArtCard] = React.useState()
     let artArr = []
-    
+
     console.log(artCard)
 
     React.useEffect(() => {
         const getArt = async () => {
             const response = await fetch(url)
             const data = await response.json()
-            const iDs = data.objectIDs
-            const slicedIDs = iDs.slice(0, 20)
+            const iDs = data.objectIDs.sort()
+            console.log(iDs)
+            const slicedIDs = iDs.slice(0, 10)
+            console.log(slicedIDs)
             slicedIDs.map((ID) => {
                 const callURL = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${ID}`
                 axios({
@@ -32,30 +35,30 @@ const DeptView = () => {
                     const json = response.data
                     artArr.push(json)
                     const mappedArr = artArr.map((obj) => (
-                        <div>
-                            <p>
-                            {obj.title}
-                            </p>
-                        </div>
+                        <Card style={{ width: '25rem' }}>
+                            <Card.Img variant="top" src={obj.primaryImage ? obj.primaryImage : "no image"} />
+                            <Card.Title>
+                                {obj.title}
+                            </Card.Title>
+                            <Card.Body>
+                                {obj.artistDisplayName ? obj.artistDisplayName : "Unknown"}
+                            </Card.Body>
+                        </Card>
                     ))
                     setArtCard(mappedArr)
                     console.log(mappedArr)
-                    
                 })
-                // return artResponse
             })
-            // const iDMap = iDs.map((ID) => {
-            //     return {ID}
-            // })
-            // console.log(iDMap)
-            // setArt()
         };
         getArt();
     }, [url])
 
 
     return (
-        <p>{artCard}</p>
+        <Row>
+            <Col>{artCard}</Col>
+        </Row>
+
     )
 }
 
