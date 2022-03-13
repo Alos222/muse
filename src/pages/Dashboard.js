@@ -7,7 +7,7 @@ import { Row, Col, Card, Container, Tab, Nav } from "react-bootstrap"
 
 
 
-const Dashboard = (props) => {
+const Dashboard = () => {
 
     const [userCredentials, setUserCredentials] = useState({
 
@@ -55,7 +55,7 @@ const Dashboard = (props) => {
                 });
             setUserCredentials({
               token,
-              user: tokenResponse,
+              user: tokenResponse.data.username,
              
             });
           }
@@ -68,7 +68,7 @@ const Dashboard = (props) => {
             <Row>
                 <Col>
                 <div className="userWelcome">
-                    <h2>Welcome {userCredentials.user.data.username}</h2>
+                    <h2>Welcome {userCredentials.user}</h2>
                 </div>
                 </Col>
             </Row>
