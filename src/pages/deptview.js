@@ -11,8 +11,8 @@ const DeptView = () => {
     const url = `https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=${deptkey}`
     console.log(url)
 
-    const [artIDs, setArtIDs] = React.useState()
-    console.log(artIDs)
+    const [art, setArt] = React.useState()
+    console.log(art)
 
     React.useEffect(() => {
         const getArtIDs = async () => {
@@ -20,21 +20,26 @@ const DeptView = () => {
             const data = await response.json()
             const iDs = data.objectIDs
             console.log(iDs)
-            const slicedIDs = iDs.slice(-10)
-            const urlCalls = slicedIDs.map((ID) => {
+            let artArr = []
+            const slicedIDs = iDs.slice(-50)
+            slicedIDs.map((ID) => {
                 const callURL = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${ID}`
-                const artResponse = axios({
+                axios({
                     method: 'get',
                     url: callURL,
                     responseType: 'json'
+                }).then(function (response) {
+                    const json = response.data
+
+                    artArr.push(json)
                 })
-                console.log(artResponse)
+                // return artResponse
             })
             // const iDMap = iDs.map((ID) => {
             //     return {ID}
             // })
             // console.log(iDMap)
-            setArtIDs(iDs)
+            setArt(artArr)
         };
         getArtIDs();
     }, [url])
