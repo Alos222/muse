@@ -21,7 +21,7 @@ const DeptView = () => {
             const response = await fetch(url)
             const data = await response.json()
             const iDs = data.objectIDs
-            const slicedIDs = iDs.slice(-20)
+            const slicedIDs = iDs.slice(0, 20)
             slicedIDs.map((ID) => {
                 const callURL = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${ID}`
                 axios({
