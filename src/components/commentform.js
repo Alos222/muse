@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Delete from "../components/delete"
 import axios from 'axios';
 
 
 const AddComment = (props) => {
-    console.log(props)
 
     const params = useParams()
     const artKey = params.objectID
@@ -41,6 +41,7 @@ const AddComment = (props) => {
                     <div>
                         <h5>{comment.title}</h5>
                         <p>{comment.body}</p>
+                        { <Delete commentID={comment._id} />}
                     </div>
                 ))
                 setMappedComments(data);
