@@ -56,31 +56,9 @@ const AddComment = (props) => {
                 <div>
                     <input
                         type='text'
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder='Username'
-                    />
-                    <input
-                        type='text'
-                        value={artId}
-                        onChange={(e) => setArtId(e.target.value)}
-                        placeholder='ArtId'
-                    />
-                </div>
-                <div>
-                    <input
-                        type='text'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder='Title'
-                    />
-                </div>
-                <div>
-                    <textarea
-                        value={userId}
-                        onChange={(e) => setUserId(e.target.value)}
-                        type='text'
-                        placeholder='UserId'
                     />
                 </div>
                 <div>
