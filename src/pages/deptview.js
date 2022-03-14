@@ -1,7 +1,7 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import axios from 'axios'
-import { Card, Button, Row, Col, CardGroup} from "react-bootstrap";
+import { Card, Button, Row, Col, CardGroup } from "react-bootstrap";
 
 
 const DeptView = () => {
@@ -23,7 +23,7 @@ const DeptView = () => {
         const getArt = async () => {
             const response = await fetch(url)
             const data = await response.json()
-            const iDs = data.objectIDs.sort(function(a, b) {
+            const iDs = data.objectIDs.sort(function (a, b) {
                 return a - b;
             })
             console.log(iDs)
@@ -40,7 +40,7 @@ const DeptView = () => {
                     const mappedArr = artArr.map((obj) => (
                         <Card style={{ width: '25rem' }}>
                             {console.log(obj)}
-                            <Card.Img variant="top" src={obj.primaryImage ? obj.primaryImage : noImg } />
+                            <Card.Img variant="top" src={obj.primaryImage ? obj.primaryImage : noImg} />
                             <Card.Title>
                                 {obj.title}
                             </Card.Title>
@@ -61,7 +61,7 @@ const DeptView = () => {
     return (
         <Row>
             <Col>
-            <CardGroup>{artCard}</CardGroup>
+                <CardGroup>{artCard}</CardGroup>
             </Col>
         </Row>
 

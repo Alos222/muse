@@ -1,27 +1,54 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
 const AddComment = (props) => {
     console.log(props)
 
-    const [userCredentials, setUserCredentials] = useState()
+    const params = useParams()
+    const artKey = params.objectID
+
+    const url = `http://localhost:3001/api/comment/${artKey}`
+
 
     const [username, setUsername] = useState('');
-    const [artId, setArtId] = useState('');
+    const [artId, setArtId] = useState();
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [userId, setUserId] = useState('');
+    const [commentList, setCommentList] = useState('')
+    const [mappedComments, setMappedComments] = useState('')
 
     useEffect(() => {
         const getUser = async () => {
             const id = props.user._id
-            console.log(id)
+            const username = props.user.username
+            const artworkID = props.art.objectID
+            setArtId(artworkID);
             setUserId(id);
+            setUsername(username);
         };
         getUser();
+        const getComments = async () => {
+            const response = await fetch(url)
+            const data = await response.json()
+            setCommentList(data)
+        }
+        getComments().then(function () {
+            const mapComments = async () => {
+                const data = commentList.map((comment) => (
+                    <div>
+                        <h5>{comment.title}</h5>
+                        <p>{comment.body}</p>
+                    </div>
+                ))
+                setMappedComments(data);
+            }
+            mapComments();
+        }
+        );
     }, [props]);
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -45,37 +72,16 @@ const AddComment = (props) => {
 
     return (
         <div>
+            {mappedComments}
             <h1></h1>
             <h4>Comment</h4>
             <form onSubmit={(e) => (handleSubmit(e))}>
                 <div>
                     <input
                         type='text'
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        placeholder='Username'
-                    />
-                    <input
-                        type='text'
-                        value={artId}
-                        onChange={(e) => setArtId(e.target.value)}
-                        placeholder='ArtId'
-                    />
-                </div>
-                <div>
-                    <input
-                        type='text'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder='Title'
-                    />
-                </div>
-                <div>
-                    <textarea
-                        value={userId}
-                        onChange={(e) => setUserId(e.target.value)}
-                        type='text'
-                        placeholder='UserId'
                     />
                 </div>
                 <div>
