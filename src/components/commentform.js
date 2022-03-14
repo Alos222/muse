@@ -16,8 +16,13 @@ const AddComment = (props) => {
     useEffect(() => {
         const getUser = async () => {
             const id = props.user._id
-            console.log(id)
+            const username = props.user.username
+            const artworkID = props.art.objectID
+            console.log(artworkID)
+
+            setArtId(artworkID);
             setUserId(id);
+            setUsername(username);
         };
         getUser();
     }, [props]);
