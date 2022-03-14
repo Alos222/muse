@@ -16,9 +16,14 @@ const AddComment = (props) => {
     const [artId, setArtId] = useState();
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
-    const [userId, setUserId] = useState('');
+    const [userId, setUserId] = useState('set');
+    console.log(userId)
     const [commentList, setCommentList] = useState('')
     const [mappedComments, setMappedComments] = useState('')
+
+    
+    const [isOwner, setIsOwner] = useState('false')
+    console.log(isOwner)
 
     useEffect(() => {
         const getUser = async () => {
@@ -39,14 +44,19 @@ const AddComment = (props) => {
             const mapComments = async () => {
                 const data = commentList.map((comment) => (
                     <div>
+                        {console.log(userId)}
+                        {console.log('testing' + (userId === comment.userId))}
                         <h5>{comment.title}</h5>
                         <p>{comment.body}</p>
-                        { <Delete commentID={comment._id} />}
+                        {(userId === comment.userId) ? <Delete commentID={comment._id} /> : "not owner"}
                     </div>
                 ))
-                setMappedComments(data);
-            }
-            mapComments();
+                setMappedComments(data);}
+                console.log(userId)
+            mapComments().then(function () {
+              
+                }  
+            );
         }
         );
     }, [props]);

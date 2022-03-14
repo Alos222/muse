@@ -1,12 +1,15 @@
 import axios from 'axios';
 import {useState} from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
+import EditForm from "../components/edit"
+
 
 const Delete = (props) => {
     const com = props.commentID
     console.log(com)
 
     const navigate = useNavigate()
+    const [isVisible, setIsVisible] = useState(false)
 
     const handleDelete = async (a) => {
         a.preventDefault();
@@ -33,6 +36,7 @@ const Delete = (props) => {
 }
     return(
         <div>
+            <EditForm commentID={com} /> 
             <button onClick={handleEdit}>Edit</button>
             <form onSubmit={(a) => (handleDelete(a).then(window.location.reload(false)))}>
               <button type='submit'>delete</button>

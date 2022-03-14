@@ -5,6 +5,7 @@ import AddComment from "../components/commentform"
 
 const ArtDetail = (props) => {
     const userData = props.user
+    console.log(userData)
     const setUserId = userData.user
     console.log(setUserId)
 
@@ -31,7 +32,7 @@ const ArtDetail = (props) => {
         return (
             <div>
                 <h1>{artDetail.title}</h1>
-                <AddComment user={setUserId} art={artDetail} />
+                <AddComment user={setUserId} art={artDetail}/>
             </div>
         )
     }
