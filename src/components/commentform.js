@@ -76,7 +76,7 @@ const AddComment = (props) => {
             {mappedComments}
             <h1></h1>
             <h4>Comment</h4>
-            <form onSubmit={(e) => (handleSubmit(e))}>
+            <form onSubmit={(e) => (handleSubmit(e).then(window.location.reload(false)))}>
                 <div>
                     <input
                         type='text'
