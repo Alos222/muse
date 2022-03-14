@@ -15,9 +15,9 @@ const AddComment = (props) => {
 
     useEffect(() => {
         const getUser = async () => {
-            const data = props.user._id
-            console.log(data)
-            setUserCredentials(data);
+            const id = props.user._id
+            console.log(id)
+            setUserId(id);
         };
         getUser();
     }, [props]);
@@ -46,7 +46,6 @@ const AddComment = (props) => {
     return (
         <div>
             <h1></h1>
-            {console.log(userCredentials)}
             <h4>Comment</h4>
             <form onSubmit={(e) => (handleSubmit(e))}>
                 <div>

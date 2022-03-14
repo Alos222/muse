@@ -14,7 +14,6 @@ const ArtDetail = (props) => {
 
     const url = `https://collectionapi.metmuseum.org/public/collection/v1/objects/${iD}`
 
-    const [userCredentials, setUserCredentials] = React.useState('')
     const [artDetail, setArtDetail] = React.useState("null")
     console.log(artDetail)
 
