@@ -20,9 +20,6 @@ const AddComment = (props) => {
     const [commentList, setCommentList] = useState('')
     const [mappedComments, setMappedComments] = useState('')
 
-    
-
-
     useEffect(() => {
         const getUser = async () => {
             const id = props.user._id
@@ -38,7 +35,7 @@ const AddComment = (props) => {
             const data = await response.json()
             setCommentList(data)
         }
-        getComments().then( function(){
+        getComments().then(function () {
             const mapComments = async () => {
                 const data = commentList.map((comment) => (
                     <div>
@@ -49,9 +46,8 @@ const AddComment = (props) => {
                 setMappedComments(data);
             }
             mapComments();
-         
         }
-            );
+        );
     }, [props]);
     const handleSubmit = async (e) => {
         e.preventDefault();
