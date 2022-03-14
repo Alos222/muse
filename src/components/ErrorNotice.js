@@ -1,4 +1,4 @@
-export default function ErrorNotice(props) {
+function ErrorNotice(props) {
     return (
       <div>
         <span>{props.message}</span>
@@ -6,3 +6,5 @@ export default function ErrorNotice(props) {
       </div>
     )
   }
+
+export default ErrorNotice

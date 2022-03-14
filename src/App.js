@@ -7,17 +7,22 @@ import Header from "./components/Header";
 import Main from "./pages/Main"
 import Dashboard from "./pages/Dashboard"
 import Context from './context/context';
+
+
+//Pages
 import Login from './pages/login';
 import Register from './pages/register';
 import DeptView from './pages/deptview';
+import ArtDetail from './pages/artDetailView';
+
 
 import { useEffect, useState, React } from 'react';
-import {  Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 
 
 function App() {
- 
+
   const user = localStorage.getItem('auth-token')
 
   const [error, setError] = useState();
@@ -31,7 +36,7 @@ function App() {
   useEffect(() => {
 
     const checkLoggedIn = async () => {
-  
+
       let token = localStorage.getItem('auth-token');
       console.log('checking for login')
       console.log(token)
@@ -53,6 +58,7 @@ function App() {
         ).catch((error) => {
           console.log(error.toJSON());
         });
+      // console.log(tokenResponse)
       if (tokenResponse) {
         const res = await axios.post
           (
@@ -64,10 +70,10 @@ function App() {
             }).catch((error) => {
               setError(error);
             });
+        console.log(tokenResponse.data)
         setUserCredentials({
           token,
-          user: res,
-         
+          user: tokenResponse.data,
         });
       }
     }
@@ -75,18 +81,17 @@ function App() {
   }, []);
 
   return (
-      <Context.Provider value={{ userCredentials, setUserCredentials }}>
-        {console.log(userCredentials)}
-        <Header />
-        <Routes >
-          <Route exact path="/" index element={!userCredentials ? < Dashboard /> : < Main />} />
-          <Route exact path="/dashboard" index element={userCredentials.token ? <Dashboard /> : < Login />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register/>} />
-          <Route path='/department/:deptID' element={<DeptView/>}/>
-            <Route path=":deptID" element={<DeptView/>}/>
-        </Routes>
-      </Context.Provider>
+    <Context.Provider value={{ userCredentials, setUserCredentials }}>
+      <Header />
+      <Routes >
+        <Route exact path="/" index element={!userCredentials ? < Dashboard /> : < Main />} />
+        <Route exact path="/dashboard" index element={userCredentials ? <Dashboard /> : < Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path='/department/:deptID' element={<DeptView />} />
+        <Route path="/artDetail/:objectID" element={< ArtDetail user={userCredentials} />} />
+      </Routes>
+    </Context.Provider>
   );
 }
 
