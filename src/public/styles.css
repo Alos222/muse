@@ -50,3 +50,21 @@
     justify-content: space-between;
     align-items: center;
 }
+.Cards{
+    background: rgba(26, 26, 26, 0) !important;
+    border:rgba(26, 26, 26, 0) !important;
+}
+#maincontain {
+    background: #1A1A1A;
+    color: whitesmoke;
+    height:81.5rem;
+}
+#dashcontain{
+    background: #1A1A1A;
+    color: whitesmoke;
+    height: 76rem;
+}
+.profileButton{
+    background: rgba(82, 82, 82, 0) !important;
+    border:rgba(26, 26, 26, 0) !important;
+}

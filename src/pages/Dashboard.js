@@ -64,7 +64,7 @@ const Dashboard = () => {
       }, []);
 
     return (
-        <Container fluid className={"no-gutters mx-0 px-0"}>
+        <Container fluid className={"no-gutters mx-0 px-0"} id="dashcontain">
             <Row>
                 <Col>
                 <div className="userWelcome">

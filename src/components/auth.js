@@ -25,10 +25,9 @@ const Auth = () => {
     return (
         <div>
             {userCredentials.token ? (
-
-                    <Dropdown as={ButtonGroup}>
-                    <Button onClick={'#'}><img src={Icon} /></Button>
-                    <Dropdown.Toggle/>
+                    <Dropdown as={ButtonGroup} className="profileButton">
+                    <Button className="profileButton" onClick={'#'}><img src={Icon} /></Button>
+                    <Dropdown.Toggle className="profileButton"/>
                         <Dropdown.Menu>
                         <Dropdown.Item onClick={Home}>Home</Dropdown.Item>
                         <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
