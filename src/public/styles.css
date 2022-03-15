@@ -5,8 +5,10 @@
 }
 .navigation{
     background-color: #EB2329;
-    max-height: 120px;
+    height: 100px ;
+   
 }
+
 .hero_img {
     width: 100%;
     overflow: hidden;
@@ -36,4 +38,15 @@
 .artDetailCard{
     max-height: 60rem;
     object-fit: contain;
+}
+#loginClass{
+    justify-content: flex-end;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 85rem;
+}
+#header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

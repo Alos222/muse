@@ -84,7 +84,7 @@ function App() {
     <Context.Provider value={{ userCredentials, setUserCredentials }}>
       <Header />
       <Routes >
-        <Route exact path="/" index element={!userCredentials ? < Dashboard /> : < Main />} />
+        <Route path="/" index element={!userCredentials ? < Dashboard /> : < Main />} />
         <Route exact path="/dashboard" index element={userCredentials ? <Dashboard /> : < Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

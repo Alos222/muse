@@ -4,6 +4,7 @@ import Delete from "../components/delete"
 import axios from 'axios';
 
 
+
 const AddComment = (props) => {
 
     const params = useParams()
@@ -96,7 +97,6 @@ const AddComment = (props) => {
                     />
                 </div>
                 <div>
-                    <span>body</span>
                     <input
                         type='text'
                         value={body}

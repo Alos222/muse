@@ -5,7 +5,7 @@ import Auth from "./auth";
 const Header = () => {
     return (
         <div className="navigation">
-            <div>
+            <div id="header">
                 <Link to="/">
                     <img src={Logo} className="logoimg" alt="Logo" />
                 </Link>
