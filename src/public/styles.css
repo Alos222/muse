@@ -67,4 +67,5 @@
 .profileButton{
     background: rgba(82, 82, 82, 0) !important;
     border:rgba(26, 26, 26, 0) !important;
+    margin-right: 5px;
 }
