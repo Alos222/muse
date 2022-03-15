@@ -33,3 +33,7 @@
 .userWelcome{
     margin: 2rem 2rem;
 }
+.artDetailCard{
+    max-height: 60rem;
+    object-fit: contain;
+}

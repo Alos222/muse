@@ -1,6 +1,7 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import AddComment from "../components/commentform"
+import {Col, Row, Container, Card} from 'react-bootstrap'
 
 
 const ArtDetail = (props) => {
@@ -24,16 +25,48 @@ const ArtDetail = (props) => {
             const response = await fetch(url)
             const data = await response.json()
             setArtDetail(data);
+            console.log(data)
         }
         getArtDetail();
-    }, [])
+    }, [url])
 
     const loaded = () => {
         return (
-            <div>
-                <h1>{artDetail.title}</h1>
+            <Container>
+                <Row>
+                <Col md={12}>
+                <Card style={{ width: '100%' }}>
+                <Card.Img className="artDetailCard" src={artDetail.primaryImage}/>
+                <Card.Body>
+                <h3>{artDetail.title}</h3>
+                    <Row className="artDetailDes">
+                    <Col md={8}>
+                    <h6>Artist Name</h6>
+                    <p>{artDetail.artistDisplayName ? artDetail.artistDisplayName : "Unknown"}</p>
+                    <h6>Artist Bio</h6>
+                   <p>{artDetail.artistDisplayBio ? artDetail.artistDisplayName: "Not available"}</p>
+                    </Col>
+                    <Col md={4}>
+                    <h6>Object Name</h6>
+                    <p>{artDetail.objectName ? artDetail.objectName : " "}</p>
+                    <h6>Culture</h6>
+                    <p>{artDetail.culture ? artDetail.culture : "Unknown"}</p>
+                    <h6>Date</h6>
+                    <p>{artDetail.objectDate}</p>
+                    </Col>
+                    </Row>
+                </Card.Body>
+                </Card>
+                <div>
+                <h3>Comments</h3>
+                </div>
+         
+                <Card> 
                 <AddComment user={setUserId} art={artDetail}/>
-            </div>
+                </Card>
+                </Col>
+                </Row>
+            </Container>
         )
     }
 

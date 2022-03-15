@@ -38,7 +38,7 @@ const DeptView = () => {
                     const json = response.data
                     artArr.push(json)
                     const mappedArr = artArr.map((obj) => (
-                        <Card style={{ width: '25rem' }}>
+                        <Card style={{ width: '25rem' }} key={obj.objectID}>
                             {console.log(obj)}
                             <Card.Img variant="top" src={obj.primaryImage ? obj.primaryImage : noImg} />
                             <Card.Title>
