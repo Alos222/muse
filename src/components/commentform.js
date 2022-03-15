@@ -47,8 +47,8 @@ const AddComment = (props) => {
                         {console.log(userId)}
                         {console.log('testing' + (userId === comment.userId))}
                         <h5>{comment.title}</h5>
-                        <p>{comment.body}</p>
-                        {(userId === comment.userId) ? <Delete commentID={comment._id} /> : "not owner"}
+                        <p>{comment.body} by {comment.username}</p>
+                        {(userId === comment.userId) ? <Delete commentID={comment._id} /> : ""}
                     </div>
                 ))
                 setMappedComments(data);}

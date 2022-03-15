@@ -29,14 +29,14 @@ const Delete = (props) => {
     const handleEdit = async (b) => {
         b.preventDefault()
         try {
-            navigate(`edit/${com}`)
+            setIsVisible(true)
         } catch(err) {
         console.log(err)
     }
 }
     return(
         <div>
-            <EditForm commentID={com} /> 
+            {(isVisible === true) ? <EditForm commentID={com}/> : ""} 
             <button onClick={handleEdit}>Edit</button>
             <form onSubmit={(a) => (handleDelete(a).then(window.location.reload(false)))}>
               <button type='submit'>delete</button>
