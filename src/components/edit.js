@@ -59,14 +59,12 @@ const EditForm = (props) => {
                     />
                 </div>
                 <div>
-                    <span>body</span>
                     <input
                         type='text'
                         value={body}
                         onChange={(e) => setBody(e.target.value)}
                         placeholder='Body'
                     />
-                    <label></label>
                 </div>
                 <div>
                     <button type='submit'>Submit</button>
@@ -76,7 +74,7 @@ const EditForm = (props) => {
     }
     const loading = () => {
         return (
-            <h1>loading...</h1>
+            <h5>loading...</h5>
         )
     }
     return comment ? loaded() : loading()

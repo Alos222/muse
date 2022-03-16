@@ -68,7 +68,7 @@ const Dashboard = () => {
             <Row>
                 <Col>
                 <div className="userWelcome">
-                    <h2>Welcome {userCredentials.user}</h2>
+                    <h2>Welcome {userCredentials.user} ,</h2>
                 </div>
                 </Col>
             </Row>
