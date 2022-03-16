@@ -5,7 +5,7 @@ import { Container, Row, Col, Stack } from "react-bootstrap";
 
 function Main(props) {
     return (
-        <Container fluid className={"no-gutters mx-0 px-0"}>
+        <Container fluid className={"no-gutters mx-0 px-0"} id="maincontain">
             <Row>
                 <img src={Hero} className="hero_img" alt="hero image" />
             </Row>

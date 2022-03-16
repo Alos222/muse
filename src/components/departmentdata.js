@@ -19,8 +19,7 @@ const DepartmentData = () => {
 
             //After the data is imported, turn that data into cards
             const dept = data.departments.map((dept) => (
-        
-                       <Card border='light' style={{ width: '18rem' }} key={dept.departmentId}>
+                       <Card className="departments" border='light' style={{ width: '18rem' }} key={dept.departmentId}>
                     <Card.Title>{dept.displayName}</Card.Title>
                 </Card>
  

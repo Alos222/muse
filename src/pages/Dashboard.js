@@ -64,11 +64,11 @@ const Dashboard = () => {
       }, []);
 
     return (
-        <Container fluid className={"no-gutters mx-0 px-0"}>
+        <Container fluid className={"no-gutters mx-0 px-0"} id="dashcontain">
             <Row>
                 <Col>
                 <div className="userWelcome">
-                    <h2>Welcome {userCredentials.user}</h2>
+                    <h2>Welcome {userCredentials.user} ,</h2>
                 </div>
                 </Col>
             </Row>

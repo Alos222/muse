@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import Context from '../context/context';
+import { Dropdown, ButtonGroup, Button } from 'react-bootstrap'
+import Icon from "../img/Profilebutton.png"
 
 const Auth = () => {
 
@@ -23,10 +25,15 @@ const Auth = () => {
     return (
         <div>
             {userCredentials.token ? (
-                <div>
-                    <button onClick={Home}>Home</button>
-                    <button onClick={logout}>Logout</button>
-                </div>
+                    <Dropdown as={ButtonGroup} className="profileButton">
+                    <Button className="profileButton" onClick={'#'}><img src={Icon} /></Button>
+                    <Dropdown.Toggle className="profileButton"/>
+                        <Dropdown.Menu>
+                        <Dropdown.Item onClick={Home}>Home</Dropdown.Item>
+                        <Dropdown.Item onClick={logout}>Logout</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+            
             ) : (
                 <div>
                     <button onClick={register}>Register</button>

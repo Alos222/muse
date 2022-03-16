@@ -4,6 +4,7 @@ import Delete from "../components/delete"
 import axios from 'axios';
 
 
+
 const AddComment = (props) => {
 
     const params = useParams()
@@ -21,7 +22,7 @@ const AddComment = (props) => {
     const [commentList, setCommentList] = useState('')
     const [mappedComments, setMappedComments] = useState('')
 
-    
+
     const [isOwner, setIsOwner] = useState('false')
     console.log(isOwner)
 
@@ -43,19 +44,17 @@ const AddComment = (props) => {
         getComments().then(function () {
             const mapComments = async () => {
                 const data = commentList.map((comment) => (
-                    <div>
-                        {console.log(userId)}
-                        {console.log('testing' + (userId === comment.userId))}
+                    <div className="comments">
                         <h5>{comment.title}</h5>
                         <p>{comment.body} by {comment.username}</p>
                         {(userId === comment.userId) ? <Delete commentID={comment._id} /> : ""}
                     </div>
                 ))
-                setMappedComments(data);}
-                console.log(userId)
+                setMappedComments(data);
+            }
+            console.log(userId)
             mapComments().then(function () {
-              
-                }  
+            }
             );
         }
         );
@@ -82,31 +81,35 @@ const AddComment = (props) => {
     }
 
     return (
-        <div>
+        <div className="Cards">
             {mappedComments}
             <h1></h1>
-            <h4>Comment</h4>
+            <h5>Post a comment</h5>
             <form onSubmit={(e) => (handleSubmit(e).then(window.location.reload(false)))}>
-                <div>
-                    <input
-                        type='text'
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        placeholder='Title'
-                    />
-                </div>
-                <div>
-                    <span>body</span>
-                    <input
-                        type='text'
-                        value={body}
-                        onChange={(e) => setBody(e.target.value)}
-                        placeholder='Body'
-                    />
-                    <label></label>
-                </div>
-                <div>
-                    <button type='submit'>Submit</button>
+                <div className="commentinputs">
+                    <div>
+                        <input
+                            type='text'
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            placeholder='Title here...'
+                            size="35"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type='text'
+                            value={body}
+                            onChange={(e) => setBody(e.target.value)}
+                            placeholder='write here...'
+                            size="40"
+                            style={{height: 100}}
+                        />
+                        <label></label>
+                    </div>
+                    <div>
+                        <button type='submit'>Submit</button>
+                    </div>
                 </div>
             </form>
         </div>

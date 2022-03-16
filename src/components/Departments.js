@@ -81,8 +81,8 @@ const Department = () => {
     ]
 
     const dept = departments.map((dept, index) => (
-        <CardGroup>
-            <Card border='light' style={{ width: '20rem' }} key={index}>
+        <CardGroup className="CardGroup">
+            <Card  className="Cards"  border='none' style={{ width: '20rem' }} key={dept.displayName}>
                 <Card.Title>
                     <Card.Link href={"department/" + dept.departmentId}> {dept.displayName}</Card.Link>
                 </Card.Title>
