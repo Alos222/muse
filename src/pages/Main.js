@@ -16,7 +16,7 @@ function Main(props) {
                             <Stack gap={3}>
                                 <div className="About">
                                     <h2>About Muse</h2>
-                                    <p>Est ex exercitation Lorem dolore eiusmod tempor. Ullamco Lorem sint est laborum. Irure sunt in culpa voluptate pariatur nostrud duis sit. Qui dolore minim reprehenderit laborum nulla sit cillum et elit cupidatat nulla non. Eiusmod minim id proident aliqua cupidatat excepteur exercitation proident anim. Ut eu veniam fugiat aliquip exercitation fugiat adipisicing pariatur nostrud dolor. Pariatur et dolor magna laborum eu cupidatat mollit deserunt dolor cupidatat ex.</p>
+                                    <p>Muse is an app that is powered by The Metropolitan museum of art’s openAccess API. Muse’s goal is to create a user experience that encourages sharing of opinions on art pieces while educating users on Art History. Users will be able to browse collections created by The MET and create their own collections. Users will be able to create threads on other users' collections as well as create/share notecards and pop quizzes.</p>
                                 </div>
                             </Stack>
                         </Col>
